@@ -1,0 +1,26 @@
+h3 {
+    background-color: cadetblue;
+    padding: 1rem;
+    margin: .5rem;
+    width: 3rem;
+    box-shadow: 2px 2px 2px 2px darkgray;
+    border-radius: .5rem;
+    
+}
+
+h3:hover {
+    cursor: pointer;
+}
+
+p {
+    color:white
+}
+
+a {
+    background-color: grey;
+    text-decoration: none;
+    color: white;
+    border: 2px solid grey;
+    padding: 4px;
+    margin-bottom: 8px;
+}

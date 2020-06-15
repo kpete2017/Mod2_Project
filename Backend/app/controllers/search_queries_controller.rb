@@ -20,6 +20,7 @@ class SearchQueriesController < ApplicationController
 
         query.name = final_result["Similar"]["Info"][0]["Name"]
         query.search_type = final_result["Similar"]["Info"][0]["Type"] 
+        query.user_id = params[:user_id]
 
         query.save
 
