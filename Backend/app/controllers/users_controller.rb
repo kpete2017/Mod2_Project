@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
 
-    def index 
-        @users = User.all
-        render json: @users, include: [search_queries: {include: :recommendations}]
+    def index
+        if params["search"]
+          @user = User.where(`"username=? and password=?"#{params["search"]["username"]}", "#{params["password"]}"`)
+          
+          render json: @user
+        else
+          @users = User.all
+          render json: @users
+        end
     end
 
     def show
@@ -11,22 +17,6 @@ class UsersController < ApplicationController
     end
 
     def create
-
-        query = SearchQuery.new
-
-        uri_string = "https://tastedive.com/api/similar?q=#{params[:name]}&k=375558-WillReev-I7J6U4X5"
-        uri = URI.parse(uri_string)
-        uri_response = Net::HTTP.get_response(uri)
-        final_result = JSON.parse(uri_response.body)
-
-        query.name = final_result["Similar"]["Info"][0]["Name"]
-        query.search_type = final_result["Similar"]["Info"][0]["Type"] 
-
-        query.save
-
-        final_result["Similar"]["Results"].each do |recomendation|
-            Recommendation.create({name: recomendation["Name"], search_query_id: query.id})
-        end
 
     end
 

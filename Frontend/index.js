@@ -1,7 +1,19 @@
 fetch(`http://localhost:3000/users`)
     .then(response => response.json())
-    .then(itemSearch => index(itemSearch))
+    .then(itemSearch => login(itemSearch))
 const list = document.getElementById("list")
+
+
+function login(itemSearch) {
+    const main = document.getElementById("list")
+    main.innerHTML = `
+    <form>
+        <input type="text" name="username" placeholder="Username"/></br>
+        <input type="password" name="password" placeholder="Password"/></br>
+        <input type="submit" value="Login"/>
+    </form>`    
+    document.body.append(main)
+}
 
 function index(users) {
     // console.log(itemSearch)
@@ -17,7 +29,7 @@ main = document.querySelector("main")
 
 function listUserQueries(user) {
     document.body.removeChild(main)
-    userHeader = document.createElement('main')
+    const userHeader = document.createElement('main')
     userHeader.innerHTML = 
         `<section>
             <form method="POST" action="http://localhost:3000/search_queries">
@@ -29,20 +41,32 @@ function listUserQueries(user) {
         <h3>${user.name}</h3>`
 
     document.body.append(userHeader)
-    searchQueries(user.search_queries)
+    searchQueries(user.search_queries, userHeader)
 }
 
-function searchQueries(sq) {
+function searchQueries(sq, userHeader) {
+    const querySec = document.createElement('section')
+    querySec.id = "list-id"
+    userHeader.append(querySec)
     sq.forEach( query => {
-        queryList = document.createElement('p')
+        const queryList = document.createElement('li')
         queryList.textContent = query.name
-        queryList.addEventListener("click", function(event) {handleEvent: listRecommendations(query) })
-        userHeader.append(queryList)
+        queryList.addEventListener("click", function(event) {handleEvent: listRecommendations(query, userHeader) })
+        querySec.append(queryList)
     })
 }
 
-function listRecommendations(query){
-    console.log(query.recommendations)
+function listRecommendations(query, userHeader){
+    document.body.removeChild(userHeader)
+
+    const recommendationHeader = document.createElement('main')
+    document.body.append(recommendationHeader)
+    recommendationHeader.innerHTML = `<h3>${query.name}</h3>`
+    query.recommendations.forEach(recommendation => {
+        const recommendationList = document.createElement('li') 
+        recommendationList.textContent = recommendation.name
+        recommendationHeader.append(recommendationList)
+    })
 }
 // var elem = document.querySelector('#some-element');
 // elem.parentNode.removeChild(elem);

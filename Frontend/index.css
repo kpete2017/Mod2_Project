@@ -1,11 +1,17 @@
 h3 {
-    background-color: cadetblue;
+    background-color: darkgoldenrod;
     padding: 1rem;
-    margin: .5rem;
-    width: 3rem;
+    margin-bottom: 2rem;
+    width: 5rem;
     box-shadow: 2px 2px 2px 2px darkgray;
     border-radius: .5rem;
-    
+    margin-left: 2rem;
+}
+
+form {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
 }
 
 h3:hover {
@@ -22,5 +28,44 @@ a {
     color: white;
     border: 2px solid grey;
     padding: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 3rem;
+}
+
+li {
+    color: white;
+    padding: 3rem;
+    border: 1px solid black;
+    margin: 1rem;
+    width: 20rem;
+    list-style: decimal;
+    background-color: hsl(0, 5%, 5%)
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+main {
+    overflow:auto;
+    height:90vh; 
+    width:100%;
+    border: 2px solid black;
+    margin-top: 1rem;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
