@@ -1,8 +1,3 @@
-
-
-const name = document.getElementById("submit-button")
-name.addEventListener("click", function(event){ handleEvent: alert('Click listerner worked'), fetchUser()})
-
 searchParams = new URLSearchParams(window.location.search)
 searchUsername = searchParams.get("username")
 searchPassword = searchParams.get("password")
@@ -13,14 +8,9 @@ if(searchParams) {
     url = `${url}?username=${searchUsername}&password=${searchPassword}`
 }
 
-
-fetchUser()
-
-function fetchUser() {
-    fetch(url)
-        .then(response => response.json())
-        .then(userInfo => index(userInfo))
-}
+fetch(url)
+    .then(response => response.json())
+    .then(userInfo => index(userInfo))
 
 const list = document.getElementById("list")
 
@@ -32,16 +22,23 @@ function index(users) {
     })
 }
 
-main = document.querySelector("main")
+const main = document.querySelector("main")
+const navBar = document.getElementById("navbar")
 
 function listUserQueries(user) {
     document.body.removeChild(main)
     const userHeader = document.createElement('main')
+    const home = document.createElement("a")
+    home.href = `UserPage.html?username=${user.username}&password=${user.password}`
+    home.innerText = "Home"
+    navBar.append(home)
     userHeader.innerHTML = 
         `<section>
             <form method="POST" action="http://localhost:3000/search_queries">
                 <input name="name" type="text" placeholder="Search Anything">
                 <input type="hidden" name="user_id" value="${user.id}">
+                <input type="hidden" name="username" value="${user.username}">
+                <input type="hidden" name="password" value="${user.password}">
                 <input type="submit">
             </form>
         </section>
@@ -68,22 +65,32 @@ function searchQueries(sq, userHeader, user) {
         <button id="rec-button${counter}">Recommendations</button>
         <form action="http://localhost:3000/search_queries/${query.id}" method = "POST">
             <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
             <input type=submit value="Delete"/>
         </form>`
         querySec.append(queryList)
         const recButton = document.getElementById(`rec-button${counter}`)
-        console.log(recButton)
+        const infoButton = document.getElementById(`info-button${counter}`)
         recButton.addEventListener("click", function(event) {handleEvent: listRecommendations(query, userHeader, user) })
+        infoButton.addEventListener("click", function(event) {handleEvent: moreInfoQuery(query) })
+        
         counter++
     }) 
 }
 
-
-
+function moreInfoQuery(query){
+    fetch()
+        .then(resp => resp.json())
+        .then(result => console.log(result))
+}
 
 function listRecommendations(query, userHeader, user){
 
     document.body.removeChild(userHeader)
+
+    console.log(user.username)
+    console.log(user.password)
 
     const recommendationHeader = document.createElement('main')
     document.body.append(recommendationHeader)
@@ -95,6 +102,8 @@ function listRecommendations(query, userHeader, user){
             <section>
                 <form method="POST" action="http://localhost:3000/search_queries">
                     <input name="name" type="hidden" value="${recommendation.name}">
+                    <input type="hidden" name="username" value="${user.username}">
+                    <input type="hidden" name="password" value="${user.password}">
                     <input type="hidden" name="user_id" value="${user.id}">
                     <input type="submit" value="Add to Library">
                 </form>
@@ -104,5 +113,3 @@ function listRecommendations(query, userHeader, user){
 
     })
 }
-// var elem = document.querySelector('#some-element');
-// elem.parentNode.removeChild(elem);

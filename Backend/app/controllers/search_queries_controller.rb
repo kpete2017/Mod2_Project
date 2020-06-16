@@ -28,8 +28,8 @@ class SearchQueriesController < ApplicationController
         final_result["Similar"]["Results"].each do |recomendation|
             Recommendation.create({name: recomendation["Name"], search_query_id: query.id})
         end
-
-        redirect_to "http://localhost:3001"
+        
+        redirect_to "http://localhost:3001/UserPage.html?username=#{params[:username]}&password=#{params[:password]}"
     end
 
     def destroy
@@ -37,7 +37,8 @@ class SearchQueriesController < ApplicationController
         @query = SearchQuery.find(params[:id])
         @query.destroy
 
-        redirect_to "http://localhost:3001"
+        redirect_to "http://localhost:3001/UserPage.html?username=#{params[:username]}&password=#{params[:password]}"
     end
 
 end
+-
