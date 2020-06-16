@@ -18,13 +18,13 @@ uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
 final_result = JSON.parse(uri_response.body)
 
-puts final_result
-
 rhcp = SearchQuery.create({name: final_result["Similar"]["Info"][0]["Name"], search_type: final_result["Similar"]["Info"][0]["Type"], user_id: kyle.id })
 
 final_result["Similar"]["Results"].each do |recomendation|
     Recommendation.create({name: recomendation["Name"], search_query_id: rhcp.id})
 end
+
+puts final_result
 
 uri_string = "https://tastedive.com/api/similar?q=Queen&k=375558-WillReev-I7J6U4X5"
 uri = URI.parse(uri_string)
@@ -37,6 +37,8 @@ final_result["Similar"]["Results"].each do |recomendation|
     Recommendation.create({name: recomendation["Name"], search_query_id: queen.id})
 end
 
+puts final_result
+
 uri_string = "https://tastedive.com/api/similar?q=Gorillaz&k=375558-WillReev-I7J6U4X5"
 uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
@@ -47,3 +49,5 @@ gorillaz = SearchQuery.create({name: final_result["Similar"]["Info"][0]["Name"],
 final_result["Similar"]["Results"].each do |recomendation|
     Recommendation.create({name: recomendation["Name"], search_query_id: gorillaz.id})
 end
+
+puts final_result

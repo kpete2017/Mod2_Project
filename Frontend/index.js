@@ -1,22 +1,34 @@
-fetch(`http://localhost:3000/users`)
-    .then(response => response.json())
-    .then(itemSearch => login(itemSearch))
-const list = document.getElementById("list")
+login()
 
-
-function login(itemSearch) {
+function login() {
     const main = document.getElementById("list")
     main.innerHTML = `
-    <form>
-        <input type="text" name="username" placeholder="Username"/></br>
-        <input type="password" name="password" placeholder="Password"/></br>
-        <input type="submit" value="Login"/>
+    <form method="GET" action="http://localhost:3000/users">
+        <input type="text" name="username" placeholder="Username" value="kylep20"/></br>
+        <input type="text" name="password" placeholder="Password" value="Iheartrhcp30"/></br>
+        <input id="submit-button" type="submit" value="Login"/>
     </form>`    
+    const name = document.getElementById("submit-button")
+    document.body.append(main)
+    name.addEventListener("click", function(event){ handleEvent: alert('Click listerner worked'), fetchUser()})
     document.body.append(main)
 }
 
+function fetchUser() {
+    alert("Made it to Fetch User")
+    fetch(`http://localhost:3000/users`)
+        .then(response => response.json())
+        .then(userInfo => index(userInfo))
+}
+
+
+const list = document.getElementById("list")
+
+
 function index(users) {
     // console.log(itemSearch)
+    alert(users[0]["name"])
+    alert("Made it to index")
     users.forEach( user => {
         const name = document.createElement("h3")
         name.innerHTML = user.name
@@ -28,6 +40,7 @@ function index(users) {
 main = document.querySelector("main")
 
 function listUserQueries(user) {
+    alert("Made it to list queries")
     document.body.removeChild(main)
     const userHeader = document.createElement('main')
     userHeader.innerHTML = 
@@ -41,10 +54,13 @@ function listUserQueries(user) {
         <h3>${user.name}</h3>`
 
     document.body.append(userHeader)
+    console.log(user)
+
     searchQueries(user.search_queries, userHeader)
 }
 
 function searchQueries(sq, userHeader) {
+
     const querySec = document.createElement('section')
     querySec.id = "list-id"
     userHeader.append(querySec)
@@ -57,6 +73,7 @@ function searchQueries(sq, userHeader) {
 }
 
 function listRecommendations(query, userHeader){
+
     document.body.removeChild(userHeader)
 
     const recommendationHeader = document.createElement('main')

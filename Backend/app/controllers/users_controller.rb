@@ -1,14 +1,19 @@
 class UsersController < ApplicationController
 
     def index
-        if params["search"]
-          @user = User.where(`"username=? and password=?"#{params["search"]["username"]}", "#{params["password"]}"`)
-          
-          render json: @user
+
+        if params[:username]
+          puts "MADE IT HERE SEE MEE"
+          # @user = User.where(`"username=? and password=?","#{params["username"]}", "#{params["password"]}"`)
+          @users = User.where(
+            username: params[:username],
+            password: params[:password]
+          )
         else
           @users = User.all
-          render json: @users
         end
+
+        render json: @users, include: [search_queries: {include: :recommendations}]
     end
 
     def show
