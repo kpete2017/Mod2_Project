@@ -1,4 +1,5 @@
 class SearchQueriesController < ApplicationController
+
     def index 
         @search_queries = SearchQuery.all
         render json: @search_queries, include: [:recommendations]
@@ -28,5 +29,15 @@ class SearchQueriesController < ApplicationController
             Recommendation.create({name: recomendation["Name"], search_query_id: query.id})
         end
 
+        redirect_to "http://localhost:3001"
     end
+
+    def destroy
+
+        @query = SearchQuery.find(params[:id])
+        @query.destroy
+
+        redirect_to "http://localhost:3001"
+    end
+
 end

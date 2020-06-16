@@ -1,4 +1,4 @@
 class SearchQuery < ApplicationRecord
-    has_many :recommendations
+    has_many :recommendations, dependent: :destroy
     belongs_to :user
 end
