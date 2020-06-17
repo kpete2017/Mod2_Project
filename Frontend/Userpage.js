@@ -135,6 +135,7 @@ function listRecommendations(query, userHeader, user){
     let counter = 0
     query.recommendations.forEach(recommendation => {
         const recommendationList = document.createElement('li') 
+        recommendationList.className = recommendation.search_type
         recommendationList.innerHTML = 
             `
             <h4>${recommendation.name}</h4>
@@ -151,6 +152,7 @@ function listRecommendations(query, userHeader, user){
         const infoButton = document.getElementById(`info-button${counter}`)
         infoButton.addEventListener("click", function(event) {handleEvent: moreInfoRecomendationQuery(recommendation, recommendationHeader) })
         counter++
+        createIcon(recommendation.search_type, recommendationList)
     })
 }
 
