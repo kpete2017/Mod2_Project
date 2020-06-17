@@ -58,9 +58,9 @@ function searchQueries(sq, userHeader, user) {
     counter = 0
     sq.forEach( query => {
         const queryList = document.createElement('li')
+        queryList.className = query.search_type
         queryList.innerHTML = `
         <h4>${query.name}</h4>
-        <p class="category">${query.search_type}</p>
         <button id="info-button${counter}">More Info</button>
         <button id="rec-button${counter}">Recommendations</button>
         <form action="http://localhost:3000/search_queries/${query.id}" method = "POST">
@@ -74,9 +74,32 @@ function searchQueries(sq, userHeader, user) {
         const infoButton = document.getElementById(`info-button${counter}`)
         recButton.addEventListener("click", function(event) {handleEvent: listRecommendations(query, userHeader, user) })
         infoButton.addEventListener("click", function(event) {handleEvent: moreInfoQuery(query) })
-        
+        createIcon(query.search_type, queryList)
         counter++
     }) 
+}
+
+function createIcon(search_type, queryList){
+    let iconDiv = document.createElement('div')
+    iconDiv.className = "icon"
+    switch (search_type) {
+        case "music":
+            iconDiv.innerHTML = "<img src='./icons/iconfinder_music_172510.png'>"
+            break;
+        case "movie":
+            iconDiv.innerHTML = "<img src='./icons/movie-icon-png-1.png'>"
+            break;
+        case "podcast":
+            iconDiv.innerHTML = "<img src='./icons/clipart2563313.png'>"
+            break;
+        case "book":
+            iconDiv.innerHTML = "<img src='./icons/pngwing.com.png'>"
+            break;
+        case "show":
+            iconDiv.innerHTML = "<img src='./icons/tv_icon.png'>"
+            break;
+    }
+    queryList.append(iconDiv)
 }
 
 function moreInfoQuery(query){
