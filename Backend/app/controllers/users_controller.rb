@@ -23,21 +23,11 @@ class UsersController < ApplicationController
 
   def create
     user = User.new
-
-    uri_string = "https://tastedive.com/api/similar?q=#{params[:name]}&k=375558-WillReev-I7J6U4X5"
-    uri = URI.parse(uri_string)
-    uri_response = Net::HTTP.get_response(uri)
-    final_result = JSON.parse(uri_response.body)
-
-    query.name = final_result["Similar"]["Info"][0]["Name"]
-    query.search_type = final_result["Similar"]["Info"][0]["Type"] 
-    query.user_id = params[:user_id]
-
-    query.save
-
-    final_result["Similar"]["Results"].each do |recomendation|
-        Recommendation.create({name: recomendation["Name"], search_query_id: query.id})
-    end
+    user.name = params[:name]
+    user.username = params[:username]
+    user.password = params[:password]
+    user.save
+    redirect_to "http://localhost:3001/UserPage.html?username=#{params[:username]}&password=#{params[:password]}"
   end
 
 end

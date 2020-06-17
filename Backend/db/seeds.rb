@@ -13,15 +13,27 @@ kyle = User.create({ name: "Kyle", username: "kylep20", password:"Iheartrhcp30" 
 will = User.create({ name: "Will", username: "Will's Username", password: "Will's Password" })
 
 
-uri_string = "https://tastedive.com/api/similar?q=red+hot+chili+peppers&k=375558-WillReev-I7J6U4X5"
+uri_string = "https://tastedive.com/api/similar?q=red+hot+chili+peppers&info=1&k=375558-WillReev-I7J6U4X5"
 uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
 final_result = JSON.parse(uri_response.body)
 
-rhcp = SearchQuery.create({name: final_result["Similar"]["Info"][0]["Name"], search_type: final_result["Similar"]["Info"][0]["Type"], user_id: kyle.id })
+rhcp = SearchQuery.create({
+    name: final_result["Similar"]["Info"][0]["Name"], 
+    search_type: final_result["Similar"]["Info"][0]["Type"],
+    wTeaser: final_result["Similar"]["Info"][0]["wTeaser"],
+    wUrl: final_result["Similar"]["Info"][0]["wUrl"],
+    yUrl: final_result["Similar"]["Info"][0]["yUrl"],  
+    user_id: kyle.id })
 
 final_result["Similar"]["Results"].each do |recomendation|
-    Recommendation.create({name: recomendation["Name"], search_query_id: rhcp.id})
+    Recommendation.create({
+    name: recomendation["Name"],
+    search_type: recomendation["Type"], 
+    wTeaser: recomendation["wTeaser"], 
+    wUrl: recomendation["wUrl"], 
+    yUrl: recomendation["yUrl"], 
+    search_query_id: rhcp.id})
 end
 
 puts final_result
@@ -31,10 +43,22 @@ uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
 final_result = JSON.parse(uri_response.body)
 
-queen = SearchQuery.create({name: final_result["Similar"]["Info"][0]["Name"], search_type: final_result["Similar"]["Info"][0]["Type"], user_id: kyle.id })
+queen = SearchQuery.create({
+    name: final_result["Similar"]["Info"][0]["Name"], 
+    search_type: final_result["Similar"]["Info"][0]["Type"],
+    wTeaser: final_result["Similar"]["Info"][0]["wTeaser"],
+    wUrl: final_result["Similar"]["Info"][0]["wUrl"],
+    yUrl: final_result["Similar"]["Info"][0]["yUrl"],  
+    user_id: kyle.id })
 
 final_result["Similar"]["Results"].each do |recomendation|
-    Recommendation.create({name: recomendation["Name"], search_query_id: queen.id})
+    Recommendation.create(
+        {name: recomendation["Name"],
+        search_type: recomendation["Type"], 
+        wTeaser: recomendation["wTeaser"], 
+        wUrl: recomendation["wUrl"], 
+        yUrl: recomendation["yUrl"], 
+        search_query_id: queen.id})
 end
 
 puts final_result
@@ -47,7 +71,13 @@ final_result = JSON.parse(uri_response.body)
 gorillaz = SearchQuery.create({name: final_result["Similar"]["Info"][0]["Name"], search_type: final_result["Similar"]["Info"][0]["Type"], user_id: will.id })
 
 final_result["Similar"]["Results"].each do |recomendation|
-    Recommendation.create({name: recomendation["Name"], search_query_id: gorillaz.id})
+    Recommendation.create({
+        name: recomendation["Name"],
+        search_type: recomendation["Type"], 
+        wTeaser: recomendation["wTeaser"], 
+        wUrl: recomendation["wUrl"], 
+        yUrl: recomendation["yUrl"], 
+        search_query_id: gorillaz.id})
 end
 
 puts final_result
