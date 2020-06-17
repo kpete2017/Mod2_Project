@@ -14,7 +14,7 @@ class SearchQueriesController < ApplicationController
 
         query = SearchQuery.new
 
-        uri_string = "https://tastedive.com/api/similar?q=#{params[:name]}&info=1&k=375558-WillReev-I7J6U4X5"
+        uri_string = "https://tastedive.com/api/similar?q=#{params[:name]}&#{params[:search_type]}&info=1&k=375558-WillReev-I7J6U4X5"
         uri = URI.parse(uri_string)
         uri_response = Net::HTTP.get_response(uri)
         final_result = JSON.parse(uri_response.body)

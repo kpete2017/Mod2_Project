@@ -1,8 +1,9 @@
-searchParams = new URLSearchParams(window.location.search)
-searchUsername = searchParams.get("username")
-searchPassword = searchParams.get("password")
-
+let searchParams = new URLSearchParams(window.location.search)
+let searchUsername = searchParams.get("username")
+let searchPassword = searchParams.get("password")
+let searchType = searchParams.get("search_type")
 let url = "http://localhost:3000/users"
+
 
 if(searchParams) {
     url = `${url}?username=${searchUsername}&password=${searchPassword}`
@@ -16,7 +17,7 @@ const list = document.getElementById("list")
 
 
 function index(users) {
-    // console.log(itemSearch)
+
     users.forEach( user => {
         listUserQueries(user)
     })
@@ -37,24 +38,59 @@ function listUserQueries(user) {
     navBar.append(home)
     navBar.append(logoutButton)
     userHeader.innerHTML = 
-    `<section>
+    `<section id="header">
         <h3>Welcome back ${user.name}!</h3>
+        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="hidden" name="search_type" value="music">
+            <input type="submit" value="">
+        </form>
+        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="hidden" name="search_type" value="movie">
+            <input type="submit" value="">
+        </form>
+        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="hidden" name="search_type" value="show">
+            <input type="submit" value="">
+        </form>
+        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="hidden" name="search_type" value="podcast">
+            <input type="submit" value="">
+        </form>
+        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="hidden" name="search_type" value="book">
+            <input type="submit" value="">
+        </form>
+
         <form method="POST" action="http://localhost:3000/search_queries">
-            <input name="name" type="text" placeholder="Search Anything">
+            <input id="search-name" name="name" type="text" placeholder="Search Anything" size=50>
             <input type="hidden" name="user_id" value="${user.id}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
-            <input type="submit">
+            <input id="search-submit" type="submit">
         </form>
     </section> `
 
     document.body.append(userHeader)
-    console.log(user)
 
     searchQueries(user.search_queries, userHeader, user)
 }
 
 function searchQueries(sq, userHeader, user) {
+
+    
+    if (searchType) {
+        sq = sq.filter( query => query.search_type === searchType )
+    }
 
     const querySec = document.createElement('section')
     querySec.id = "list-id"
@@ -112,6 +148,7 @@ function moreInfoQuery(query, userHeader){
     const info = document.createElement("section")
     info.className = "info-class"
     info.innerHTML = `
+    <h1>${query.name}</h1>
     <h2>Description:</h2>
     <p>${query.wTeaser}</p></br>
     <h2>Wikipedia</h2>
@@ -126,9 +163,6 @@ function moreInfoQuery(query, userHeader){
 function listRecommendations(query, userHeader, user){
 
     document.body.removeChild(userHeader)
-
-    console.log(user.username)
-    console.log(user.password)
 
     const recommendationHeader = document.createElement('main')
     document.body.append(recommendationHeader)
@@ -166,8 +200,12 @@ function moreInfoRecomendationQuery(query, userHeader){
     const info = document.createElement("section")
     info.className = "info-class"
     info.innerHTML = `
-    <p>${query.wTeaser}</p>
-    <a href="${query.wUrl}">${query.wUrl}</a>
+    <h1>${query.name}</h1>
+    <h2>Description:</h2>
+    <p>${query.wTeaser}</p></br>
+    <h2>Wikipedia</h2>
+    <a href="${query.wUrl}">${query.wUrl}</a></br>
+    <h2>Youtube</h2>
     <a href="${query.yUrl}">${query.yUrl}</a>
     `
 

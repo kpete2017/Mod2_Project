@@ -9,11 +9,12 @@ class UsersController < ApplicationController
           username: params[:username],
           password: params[:password]
         )
+        render json: @users, include: [search_queries: {include: :recommendations}]
+      
       else
         @users = User.all
+        render json: @users, include: [search_queries: {include: :recommendations}]
       end
-
-      render json: @users, include: [search_queries: {include: :recommendations}]
   end
 
   def show
