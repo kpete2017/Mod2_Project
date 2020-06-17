@@ -110,9 +110,13 @@ function createIcon(search_type, queryList){
 function moreInfoQuery(query, userHeader){
     document.body.removeChild(userHeader)
     const info = document.createElement("section")
+    info.className = "info-class"
     info.innerHTML = `
-    <p>${query.wTeaser}</p>
-    <a href="${query.wUrl}">${query.wUrl}</a>
+    <h2>Description:</h2>
+    <p>${query.wTeaser}</p></br>
+    <h2>Wikipedia</h2>
+    <a href="${query.wUrl}">${query.wUrl}</a></br>
+    <h2>Youtube</h2>
     <a href="${query.yUrl}">${query.yUrl}</a>
     `
 
@@ -160,6 +164,7 @@ function listRecommendations(query, userHeader, user){
 function moreInfoRecomendationQuery(query, userHeader){
     document.body.removeChild(userHeader)
     const info = document.createElement("section")
+    info.className = "info-class"
     info.innerHTML = `
     <p>${query.wTeaser}</p>
     <a href="${query.wUrl}">${query.wUrl}</a>
