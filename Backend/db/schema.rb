@@ -14,6 +14,10 @@ ActiveRecord::Schema.define(version: 2020_06_15_191203) do
 
   create_table "recommendations", force: :cascade do |t|
     t.string "name"
+    t.string "search_type"
+    t.string "wTeaser"
+    t.string "wUrl"
+    t.string "yUrl"
     t.integer "search_query_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -23,6 +27,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_191203) do
   create_table "search_queries", force: :cascade do |t|
     t.string "name"
     t.string "search_type"
+    t.string "wTeaser"
+    t.string "wUrl"
+    t.string "yUrl"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -38,6 +38,29 @@ form > input {
         inset -1px -2px hsl(41, 95%, 35%);
 }
 
+#name {
+    margin-left: 2.2rem;
+}
+
+#new-account{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#account-button{
+    display: block;
+    border: none;
+    background-color: hsl(41, 95%, 46%);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    color: whitesmoke;
+    box-shadow: 
+        inset 1px 1px hsl(41, 95%, 90%),
+        inset -1px -2px hsl(41, 95%, 35%);
+}
+
+
 main {
     overflow:auto;
     height:90vh; 
