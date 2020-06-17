@@ -41,4 +41,3 @@ class SearchQueriesController < ApplicationController
     end
 
 end
--
