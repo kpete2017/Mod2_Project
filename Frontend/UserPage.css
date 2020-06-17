@@ -67,6 +67,14 @@ a {
     margin-bottom: 3rem;
 }
 
+.icon > img {
+    width: 50px;
+    filter: invert(100%);
+    position: relative;
+    top: 10px;
+    right: -200px;
+}
+
 li {
     color: white;
     padding: 1rem 1rem;
