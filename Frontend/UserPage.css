@@ -1,11 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+h2{
+    color: whitesmoke;
+    margin: 0.5rem 0 0 1rem;
+    font-family: 'Permanent Marker', cursive;
+}
+
 h3 {
     background-color: darkgoldenrod;
     padding: 1rem;
     margin-bottom: 2rem;
-    width: 5rem;
-    box-shadow: 2px 2px 2px 2px darkgray;
+    max-width: fit-content;
+    box-shadow: 2px 2px darkgray;
     border-radius: .5rem;
     margin-left: 2rem;
+}
+
+h4{
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+}
+#navbar > a {
+    margin: 0;
 }
 
 form {
@@ -14,12 +39,22 @@ form {
     margin-left: 1rem;
 }
 
-h3:hover {
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#list-id{
+    justify-content: center;
+}
+
+button{
     cursor: pointer;
 }
 
 p {
-    color:white
+    color:white;
+    margin: 0;
 }
 
 a {
@@ -33,16 +68,17 @@ a {
 
 li {
     color: white;
-    padding: 3rem;
+    padding: 1rem 1rem;
     border: 1px solid black;
     margin: 1rem;
-    width: 20rem;
-    list-style: decimal;
-    background-color: hsl(0, 5%, 5%)
+    list-style: none;
+    background-color: hsl(0, 5%, 5%);
+    width: 240px;
+    /* max-width: max-content; */
 }
 
-li:hover {
-    cursor: pointer;
+section > li > form {
+    margin: 1rem 0 0 0;
 }
 
 main {

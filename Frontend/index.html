@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <style>
-        body {
-           background-image: url("/background_images/main_background.jpg");
-           background-repeat: no-repeat;
-           background-size: cover;
-        }
-     </style>
 </head>
 <body>
     <main id="list">
+        <h1>Recommend It!</h1>
         <form action="http://localhost:3001/UserPage.html">
+            <label>Username:</label>
             <input type="text" name="username" placeholder="Username" value="kylep20"/></br>
+            <label>Password:</label>
             <input type="text" name="password" placeholder="Password" value="Iheartrhcp30"/></br>
-            <input id="submit-button" type="submit" value="Login"/>
+            <div id="submit">
+                <input id="submit-button" type="submit" value="Login"/>
+            </div>
         </form>
     </main>
 </body>

@@ -33,16 +33,16 @@ function listUserQueries(user) {
     home.innerText = "Home"
     navBar.append(home)
     userHeader.innerHTML = 
-        `<section>
-            <form method="POST" action="http://localhost:3000/search_queries">
-                <input name="name" type="text" placeholder="Search Anything">
-                <input type="hidden" name="user_id" value="${user.id}">
-                <input type="hidden" name="username" value="${user.username}">
-                <input type="hidden" name="password" value="${user.password}">
-                <input type="submit">
-            </form>
-        </section>
-        <h3>${user.name}</h3>`
+    `<section>
+        <h3>Welcome back ${user.name}!</h3>
+        <form method="POST" action="http://localhost:3000/search_queries">
+            <input name="name" type="text" placeholder="Search Anything">
+            <input type="hidden" name="user_id" value="${user.id}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="submit">
+        </form>
+    </section> `
 
     document.body.append(userHeader)
     console.log(user)
@@ -59,7 +59,7 @@ function searchQueries(sq, userHeader, user) {
     sq.forEach( query => {
         const queryList = document.createElement('li')
         queryList.innerHTML = `
-        <p>${query.name}</p>
+        <h4>${query.name}</h4>
         <p class="category">${query.search_type}</p>
         <button id="info-button${counter}">More Info</button>
         <button id="rec-button${counter}">Recommendations</button>
@@ -95,21 +95,24 @@ function listRecommendations(query, userHeader, user){
     const recommendationHeader = document.createElement('main')
     document.body.append(recommendationHeader)
     recommendationHeader.innerHTML = `<h3>${query.name}</h3>`
+    const recommendationSection = document.createElement('section')
+    recommendationSection.id = "list-id" 
+    recommendationHeader.append(recommendationSection)
     query.recommendations.forEach(recommendation => {
         const recommendationList = document.createElement('li') 
         recommendationList.innerHTML = 
-            `<h4>${recommendation.name}</h4>
-            <section>
-                <form method="POST" action="http://localhost:3000/search_queries">
-                    <input name="name" type="hidden" value="${recommendation.name}">
-                    <input type="hidden" name="username" value="${user.username}">
-                    <input type="hidden" name="password" value="${user.password}">
-                    <input type="hidden" name="user_id" value="${user.id}">
-                    <input type="submit" value="Add to Library">
-                </form>
-            </section>
             `
-        recommendationHeader.append(recommendationList)
+            <h4>${recommendation.name}</h4>
+            <button>More Info</button>
+            <form method="POST" action="http://localhost:3000/search_queries">
+                <input name="name" type="hidden" value="${recommendation.name}">
+                <input type="hidden" name="username" value="${user.username}">
+                <input type="hidden" name="password" value="${user.password}">
+                <input type="hidden" name="user_id" value="${user.id}">
+                <input type="submit" value="Add to Library">
+            </form>
+            `
+        recommendationSection.append(recommendationList)
 
     })
 }

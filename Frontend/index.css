@@ -1,59 +1,56 @@
-h3 {
-    background-color: darkgoldenrod;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    width: 5rem;
-    box-shadow: 2px 2px 2px 2px darkgray;
-    border-radius: .5rem;
-    margin-left: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap');
+
+
+body{
+    color: whitesmoke;
+    text-shadow:1px 1px hsl(0, 0%, 0%);
+    font-family: 'Roboto', sans-serif;
+    background-image: url("/background_images/main_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    
+h1{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 72px;
+    margin: 0;
+}
+#submit{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+form > input {
+   margin: .5rem;
+   border: none;
+   background-color: hsl(0, 0%, 90%);
 }
 
-form {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-}
-
-h3:hover {
-    cursor: pointer;
-}
-
-p {
-    color:white
-}
-
-a {
-    background-color: grey;
-    text-decoration: none;
-    color: white;
-    border: 2px solid grey;
-    padding: 4px;
-    margin-bottom: 3rem;
-}
-
-li {
-    color: white;
-    padding: 3rem;
-    border: 1px solid black;
-    margin: 1rem;
-    width: 20rem;
-    list-style: decimal;
-    background-color: hsl(0, 5%, 5%)
-}
-
-li:hover {
-    cursor: pointer;
+#submit-button{
+    display: block;
+    border: none;
+    background-color: hsl(41, 95%, 46%);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    color: whitesmoke;
+    box-shadow: 
+        inset 1px 1px hsl(41, 95%, 90%),
+        inset -1px -2px hsl(41, 95%, 35%);
 }
 
 main {
     overflow:auto;
     height:90vh; 
     width:100%;
-    border: 2px solid black;
+
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -66,6 +63,6 @@ main {
 }
 
   /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
     background: #555;
-}
+} */ */
