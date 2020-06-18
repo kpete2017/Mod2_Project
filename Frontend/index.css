@@ -31,14 +31,13 @@ form > input {
 #submit-button{
     display: block;
     border: none;
-    background-color: hsl(41, 79%, 62%);
+    background-color: hsla(261, 68%, 6%, 1);
     border-radius: 20px;
     padding: 0.5rem 1rem;
     color: whitesmoke;
-    text-shadow:1px 1px hsl(0, 0%, 0%);
     box-shadow: 
-        inset 1px 1px hsl(41, 95%, 90%),
-        inset -1px -2px hsl(41, 95%, 35%);
+        inset 1px 1px hsl(261, 95%, 90%),
+        inset -1px -2px hsl(261, 95%, 20%);
 }
 
 #name {
@@ -54,14 +53,13 @@ form > input {
 #account-button{
     display: block;
     border: none;
-    background-color: hsl(41, 79%, 62%);
+    background-color: hsla(261, 68%, 6%, 1);
     border-radius: 20px;
     padding: 0.5rem 1rem;
     color: whitesmoke;
-    text-shadow:1px 1px hsl(0, 0%, 0%);
     box-shadow: 
-        inset 1px 1px hsl(41, 95%, 90%),
-        inset -1px -2px hsl(41, 95%, 35%);
+        inset 1px 1px hsl(261, 95%, 90%),
+        inset -1px -2px hsl(261, 95%, 20%);
 }
 
 

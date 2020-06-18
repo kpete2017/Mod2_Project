@@ -109,14 +109,20 @@ function searchQueries(sq, userHeader, user) {
         queryList.className = query.search_type
         queryList.innerHTML = `
         <h4>${query.name}</h4>
+        <div id="card-info">
         <button id="info-button${counter}">More Info</button>
+        </br>
+        </br>
         <button id="rec-button${counter}">Recommendations</button>
+        </br>
+        </br>
         <form action="http://localhost:3000/search_queries/${query.id}" method = "POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type=submit value="Delete"/>
-        </form>`
+        </form>
+        </div>`
         querySec.append(queryList)
         const recButton = document.getElementById(`rec-button${counter}`)
         const infoButton = document.getElementById(`info-button${counter}`)
