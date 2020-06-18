@@ -30,6 +30,7 @@ h4{
     text-align: center;
 }
 
+
 #navbar {
     display: flex;
     justify-content: space-between;
@@ -207,6 +208,10 @@ main {
     border: none;
     padding: 3.5px;
     background-color: white;
+}
+
+input {
+    cursor: pointer;
 }
 
 select {
