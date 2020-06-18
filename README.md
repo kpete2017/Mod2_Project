@@ -30,7 +30,7 @@ HOW TO GET STARTED
 
 9) In a separate terminal cd into the frontend directory 
 
-10) 
+10) `npm i lite-server` to install lite-server
 
 11) `lite-server` to run the frontend on port 3001
 
