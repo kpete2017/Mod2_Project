@@ -41,6 +41,7 @@ h4{
 
 #button > a {
     margin: 2px;
+    text-decoration: underline;
 }
 
 #header {

@@ -130,10 +130,10 @@ function searchQueries(sq, userHeader, user) {
         querySec.append(queryList)
         const recButton = document.getElementById(`rec-button${counter}`)
         const infoButton = document.getElementById(`info-button${counter}`)
-        recButton.addEventListener("click", function(event) {handleEvent: listRecommendations(query, userHeader, user) })
-        infoButton.addEventListener("click", function(event) {handleEvent: moreInfoQuery(query) })
+        recButton.addEventListener("click", function(event) { handleEvent: listRecommendations(query, userHeader, user) })
+        infoButton.addEventListener("click", function(event) { handleEvent: moreInfoQuery(query) })
         createIcon(query.search_type, queryList)
-        infoButton.addEventListener("click", function(event) {handleEvent: moreInfoQuery(query, userHeader) })
+        infoButton.addEventListener("click", function(event) { handleEvent: moreInfoQuery(query, userHeader) })
         counter++
     }) 
 }
