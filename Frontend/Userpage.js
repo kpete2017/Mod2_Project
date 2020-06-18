@@ -180,7 +180,7 @@ function backgroundChanger() {
             backgroundSetter.innerHTML = `    
             <style>
                 body {
-                background-image: url("/background_images/arcade.jpg");
+                background-image: url("/background_images/arcade-copy.jpg");
                 background-repeat: no-repeat;
                 background-size: cover;
                 }
@@ -236,7 +236,7 @@ function listRecommendations(query, userHeader, user){
 
     const recommendationHeader = document.createElement('main')
     document.body.append(recommendationHeader)
-    recommendationHeader.innerHTML = `<h3>${query.name}</h3>`
+    recommendationHeader.innerHTML = `<section id="header"><h3>${query.name}</h3></section>`
     const recommendationSection = document.createElement('section')
     recommendationSection.id = "list-id" 
     recommendationHeader.append(recommendationSection)

@@ -9,11 +9,13 @@ Recommendation.destroy_all
 SearchQuery.destroy_all
 User.destroy_all
 
+key = ENV['tastedive_api_key']
+
 kyle = User.create({ name: "Kyle", username: "kylep20", password:"Iheartrhcp30" })
 will = User.create({ name: "Will", username: "Will's Username", password: "Will's Password" })
 
 
-uri_string = "https://tastedive.com/api/similar?q=red+hot+chili+peppers&info=1&k=375558-WillReev-I7J6U4X5"
+uri_string = "https://tastedive.com/api/similar?q=red+hot+chili+peppers&info=1&k=#{key}"
 uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
 final_result = JSON.parse(uri_response.body)
@@ -38,7 +40,7 @@ end
 
 puts final_result
 
-uri_string = "https://tastedive.com/api/similar?q=Queen&info=1&k=375558-WillReev-I7J6U4X5"
+uri_string = "https://tastedive.com/api/similar?q=Queen&info=1&k=#{key}"
 uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
 final_result = JSON.parse(uri_response.body)
@@ -63,7 +65,7 @@ end
 
 puts final_result
 
-uri_string = "https://tastedive.com/api/similar?q=Gorillaz&info=1&k=375558-WillReev-I7J6U4X5"
+uri_string = "https://tastedive.com/api/similar?q=Gorillaz&info=1&k=#{key}"
 uri = URI.parse(uri_string)
 uri_response = Net::HTTP.get_response(uri)
 final_result = JSON.parse(uri_response.body)

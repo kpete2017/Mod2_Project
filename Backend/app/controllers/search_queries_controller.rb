@@ -11,14 +11,14 @@ class SearchQueriesController < ApplicationController
     end
 
     def create
-
+        key = ENV['tastedive_api_key']
         query = SearchQuery.new
 
 
         if params[:search_type]
-            uri_string = "https://tastedive.com/api/similar?q=#{params[:search_type]}:#{params[:name]}&info=1&k=375558-WillReev-I7J6U4X5"
+            uri_string = "https://tastedive.com/api/similar?q=#{params[:search_type]}:#{params[:name]}&info=1&k=#{key}"
         else
-            uri_string = "https://tastedive.com/api/similar?q=#{params[:name]}&info=1&k=375558-WillReev-I7J6U4X5"
+            uri_string = "https://tastedive.com/api/similar?q=#{params[:name]}&info=1&k=#{key}"
         end
         uri = URI.parse(uri_string)
         uri_response = Net::HTTP.get_response(uri)
