@@ -40,35 +40,36 @@ function listUserQueries(user) {
     userHeader.innerHTML = 
     `<section id="header">
         <h3>Welcome back ${user.name}!</h3>
-        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="music">
-            <input type="submit" value="music">
+            <input id="music-input"type="submit" value="">
         </form>
-        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="movie">
-            <input type="submit" value="movie">
+            <input id="movie-input" type="submit" value="">
+
         </form>
-        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="show">
-            <input type="submit" value="show">
+            <input id="show-input" type="submit" value="">
         </form>
-        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="podcast">
-            <input type="submit" value="podcast">
+            <input id="podcast-input" type="submit" value="">
         </form>
-        <form action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="book">
-            <input type="submit" value="book">
+            <input id="book-input"type="submit" value="">
         </form>
 
         <form method="POST" action="http://localhost:3000/search_queries">
