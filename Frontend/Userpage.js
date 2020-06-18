@@ -44,32 +44,38 @@ function listUserQueries(user) {
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="music">
-            <input id="music-input"type="submit" value="">
+            <input class="filter-input" id="music-input"type="submit" value="">
         </form>
         <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="movie">
-            <input id="movie-input" type="submit" value="">
+            <input class="filter-input" id="movie-input" type="submit" value="">
 
         </form>
         <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="show">
-            <input id="show-input" type="submit" value="">
+            <input class="filter-input" id="show-input" type="submit" value="">
         </form>
         <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="podcast">
-            <input id="podcast-input" type="submit" value="">
+            <input class="filter-input" id="podcast-input" type="submit" value="">
         </form>
         <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="book">
-            <input id="book-input"type="submit" value="">
+            <input class="filter-input" id="book-input"type="submit" value="">
+        </form>
+        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
+            <input type="hidden" name="username" value="${user.username}">
+            <input type="hidden" name="password" value="${user.password}">
+            <input type="hidden" name="search_type" value="game">
+            <input class="filter-input" id="game-input"type="submit" value="">
         </form>
 
         <form method="POST" action="http://localhost:3000/search_queries">
@@ -188,6 +194,16 @@ function backgroundChanger() {
                 }
             </style>`
             break;
+        case "game":
+            backgroundSetter.innerHTML = `    
+            <style>
+                body {
+                background-image: url("/background_images/arcade.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+            </style>`
+            break;
         }
 }
 
@@ -210,6 +226,9 @@ function createIcon(search_type, queryList){
             break;
         case "show":
             iconDiv.innerHTML = "<img src='./icons/tv_icon.png'>"
+            break;
+        case "game":
+            iconDiv.innerHTML = "<img class='game-icon' src='./icons/game-controller-icon.png'>"
             break;
     }
     queryList.append(iconDiv)
