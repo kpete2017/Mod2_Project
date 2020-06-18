@@ -1,12 +1,16 @@
 let searchParams = new URLSearchParams(window.location.search)
 let searchUsername = searchParams.get("username")
 let searchPassword = searchParams.get("password")
+let searchError = searchParams.get("error")
 let searchType = searchParams.get("search_type")
 let url = "http://localhost:3000/users"
 
 
 if(searchParams) {
     url = `${url}?username=${searchUsername}&password=${searchPassword}`
+    if(searchError) {
+        alert("This was a bad request. Either the API gave a bad request or it was misspelled")
+    }
 }
 
 fetch(url)

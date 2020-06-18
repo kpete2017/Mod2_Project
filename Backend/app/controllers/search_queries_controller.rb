@@ -22,7 +22,18 @@ class SearchQueriesController < ApplicationController
         end
         uri = URI.parse(uri_string)
         uri_response = Net::HTTP.get_response(uri)
-        final_result = JSON.parse(uri_response.body)
+
+        begin
+            final_result = JSON.parse(uri_response.body)
+          rescue Exception => e
+            return redirect_to "http://localhost:3001/UserPage.html?username=#{params[:username]}&password=#{params[:password]}&error=e"
+        end
+    
+        # final_result = JSON.parse(uri_response.body)
+
+        if final_result["Similar"]["Info"][0]["wTeaser"] == nil
+            return redirect_to "http://localhost:3001/UserPage.html?username=#{params[:username]}&password=#{params[:password]}&error=e"
+        end
 
         query.name = final_result["Similar"]["Info"][0]["Name"]
         query.search_type = final_result["Similar"]["Info"][0]["Type"]
