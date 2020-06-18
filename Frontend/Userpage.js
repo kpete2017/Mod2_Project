@@ -230,7 +230,7 @@ function moreInfoQuery(query, userHeader){
     <h2>Wikipedia</h2>
     <a href="${query.wUrl}">${query.wUrl}</a></br>
     <h2>Youtube</h2>
-    <a href="${query.yUrl}">${query.yUrl}</a>
+    <iframe width="560" height="315" src="${query.yUrl}"></iframe>
     `
 
     document.body.append(info)
@@ -282,8 +282,9 @@ function moreInfoRecomendationQuery(query, userHeader){
     <h2>Wikipedia</h2>
     <a href="${query.wUrl}">${query.wUrl}</a></br>
     <h2>Youtube</h2>
-    <a href="${query.yUrl}">${query.yUrl}</a>
+    <iframe width="560" height="315" src="${query.yUrl}"></iframe>
     `
+    // <a href="${query.yUrl}">${query.yUrl}</a>
 
     document.body.append(info)
 }
