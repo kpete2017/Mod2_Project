@@ -62,12 +62,6 @@ function listUserQueries(user) {
         <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
-            <input type="hidden" name="search_type" value="podcast">
-            <input class="filter-input" id="podcast-input" type="submit" value="">
-        </form>
-        <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
-            <input type="hidden" name="username" value="${user.username}">
-            <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="book">
             <input class="filter-input" id="book-input"type="submit" value="">
         </form>
@@ -79,17 +73,16 @@ function listUserQueries(user) {
         </form>
 
         <form method="POST" action="http://localhost:3000/search_queries">
-            <input id="search-name" name="name" type="text" placeholder="Search Anything" size=50>
+            <input id="search-name" name="name" type="text" placeholder="Search your interests" size=50>
             <input type="hidden" name="user_id" value="${user.id}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
-            <select name="search_type">
+            <select id="search-type" name="search_type">
                 <option value="music">Music</option>
                 <option value="movie">Movie</option>
                 <option value="show">Show</option>
                 <option value="book">Book</option>
                 <option value="game">Game</option>
-                <option value="podcast">Podcast</option>
             </select>
             <input id="search-submit" type="submit">
         </form>
@@ -162,17 +155,6 @@ function backgroundChanger() {
                 }
             </style>`
             break;
-        case "podcast":
-            backgroundSetter.innerHTML = `    
-            <style>
-                body {
-                background-image: url("/background_images/podcast.jpg");
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-color: black;
-                }
-            </style>`
-            break;
         case "book":
             backgroundSetter.innerHTML = `    
             <style>
@@ -217,9 +199,6 @@ function createIcon(search_type, queryList){
             break;
         case "movie":
             iconDiv.innerHTML = "<img src='./icons/movie-icon-png-1.png'>"
-            break;
-        case "podcast":
-            iconDiv.innerHTML = "<img src='./icons/clipart2563313.png'>"
             break;
         case "book":
             iconDiv.innerHTML = "<img src='./icons/pngwing.com.png'>"

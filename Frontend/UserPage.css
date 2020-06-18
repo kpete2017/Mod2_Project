@@ -108,6 +108,22 @@ section > h1 {
     color:white
 }
 
+.break {
+    flex-basis: 100%;
+    height: 0;
+  }
+
+#search-name {
+    font-size: 1.2rem;
+}
+
+#search-type {
+    font-size: 1.2rem;
+}
+
+#search-submit {
+    font-size: 1.2rem;
+}
 
 .info-class {
     display: block;
