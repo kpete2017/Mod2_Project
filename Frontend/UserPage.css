@@ -13,13 +13,10 @@ h2{
 }
 
 h3 {
-    background-color: darkgoldenrod;
+    background-color: rgb(218, 216, 214);
     padding: 1rem;
-    margin-bottom: 2rem;
     max-width: fit-content;
-    box-shadow: 2px 2px darkgray;
     border-radius: .5rem;
-    margin-left: 2rem;
 }
 
 h4{
@@ -86,6 +83,15 @@ a {
     right: -200px;
 }
 
+.icon > .game-icon {
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.filter-input:hover{
+    filter: invert(75%);
+}
+
 section > p {
     background: black;
 }
@@ -134,7 +140,7 @@ section > h1 {
 li {
     color: white;
     padding: 1rem 1rem;
-    border: 5px solid black;
+    border: none;
     border-radius: 10px;
     margin: 1rem;
     list-style: none;
@@ -204,6 +210,17 @@ main {
     width: 40px;
     background-size: contain;
     background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#game-input {
+    background-image: url(./icons/game-controller-icon.png);
+    height: 40px;
+    width: 40px;
+    background-size: 140%;
+    background-position: center;
     border: none;
     background-color: transparent;
     cursor: pointer;
