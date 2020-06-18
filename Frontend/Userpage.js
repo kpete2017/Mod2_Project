@@ -51,6 +51,7 @@ function listUserQueries(user) {
             <input type="hidden" name="password" value="${user.password}">
             <input type="hidden" name="search_type" value="movie">
             <input id="movie-input" type="submit" value="">
+
         </form>
         <form class="filter-form" action="http://localhost:3001/UserPage.html?username=${user.username}&password=${user.password}">
             <input type="hidden" name="username" value="${user.username}">
@@ -76,6 +77,14 @@ function listUserQueries(user) {
             <input type="hidden" name="user_id" value="${user.id}">
             <input type="hidden" name="username" value="${user.username}">
             <input type="hidden" name="password" value="${user.password}">
+            <select name="search_type">
+                <option value="music">Music</option>
+                <option value="movie">Movie</option>
+                <option value="show">Show</option>
+                <option value="book">Book</option>
+                <option value="game">Game</option>
+                <option value="podcast">Podcast</option>
+            </select>
             <input id="search-submit" type="submit">
         </form>
     </section> `
@@ -87,9 +96,9 @@ function listUserQueries(user) {
 
 function searchQueries(sq, userHeader, user) {
 
-    
     if (searchType) {
         sq = sq.filter( query => query.search_type === searchType )
+        backgroundChanger()
     }
 
     const querySec = document.createElement('section')
@@ -119,6 +128,69 @@ function searchQueries(sq, userHeader, user) {
         counter++
     }) 
 }
+
+function backgroundChanger() {
+    
+    const backgroundSetter = document.getElementById("background-setter")
+    
+    switch (searchType) {
+        case "music":
+            backgroundSetter.innerHTML = `    
+            <style>
+                body {
+                background-image: url("/background_images/main_background.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: black;
+                }
+            </style>`
+            break;
+        case "movie":
+            backgroundSetter.innerHTML = `    
+            <style>
+                body {
+                background-image: url("/background_images/movie.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: black;
+                }
+            </style>`
+            break;
+        case "podcast":
+            backgroundSetter.innerHTML = `    
+            <style>
+                body {
+                background-image: url("/background_images/podcast.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: black;
+                }
+            </style>`
+            break;
+        case "book":
+            backgroundSetter.innerHTML = `    
+            <style>
+                body {
+                background-image: url("/background_images/book.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: black;
+                }
+            </style>`
+            break;
+        case "show":
+            backgroundSetter.innerHTML = `    
+            <style>
+                body {
+                background-image: url("/background_images/show.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+            </style>`
+            break;
+        }
+}
+
 
 function createIcon(search_type, queryList){
     let iconDiv = document.createElement('div')
