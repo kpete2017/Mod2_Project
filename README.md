@@ -38,6 +38,6 @@ HOW TO GET STARTED
 
 CREATORS
 ========================
-Kyle Peterson: http://github.com/kp2017
+Kyle Petersen: http://github.com/kpete2017
 
 Will Reeves: http://github.com/WRHR
