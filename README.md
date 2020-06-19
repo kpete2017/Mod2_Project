@@ -18,7 +18,7 @@ HOW TO GET STARTED
 
 3) `bundle install` the gems required to load this app
 
-4) `bundle exec Figaro` which creates an application.yml where you insert your tatedive api key
+4) `bundle exec Figaro install` which creates an application.yml where you insert your tatsedive api key
 
 5) `rails db:create` to create the database
 
